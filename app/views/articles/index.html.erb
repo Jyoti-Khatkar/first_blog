@@ -1,29 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<h1 class="text-center mt-4">Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card text-center ">
+  <div class="card-header">
+    Featured
+  <% @articles.each do |article| %>
+  <div class="row justify-content-center">
+  <div class="col-8 shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body text-center">
+    <h5 class="card-title"><%= article.title %></h5>
+    <p class="card-text"><%= article.description %></p>
+    <a href="#" class="btn btn-primary"><%= link_to 'Show', article %></a>
+    <a href="#" class="btn btn-primary"><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+    <a href="#" class="btn btn-primary"><%= link_to 'edit', edit_article_path(@articles) %></a>
+  </div>
+  <div class="card-footer text-muted text-center">
+    2 days ago
+  </div>
+</div>
+</div>
+<% end %>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Article', new_article_path %>
